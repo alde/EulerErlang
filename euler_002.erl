@@ -1,7 +1,11 @@
 -module(euler_002).
 -export([result/0]).
 
-result() -> io:format("Result: ~w~n", [solve(4000000)]).
+result() ->
+    T1 = now(),
+    Res = solve(4000000),
+    T2 = now(),
+    io:format("Result: ~w (~w ms)~n", [Res, timer:now_diff(T2,T1)/1000]).
 
 solve(Limit) ->
     solve(0, 1, Limit).
