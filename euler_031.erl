@@ -22,4 +22,5 @@ ways(N, _) when (N < 0) ->
     0;
 % Remove the current coin, and recurse into the tail, but first recurse into the
 % current set of coins with the current coin removed.
-ways(N, [Coin|Tail]) -> ways(N, Tail) + ways(N-Coin, [Coin|Tail]).
+ways(N, [Coin|Tail]) ->
+    ways(N, Tail) + ways(N - Coin, [Coin|Tail]).
