@@ -12,21 +12,19 @@ require './primes.rb'
 
 class Euler35
 
-  @@primes = nil
-
   def initialize
-    @@primes = Primes.new
     printf(
       "=== Euler 035 ============= \n"
     )
   end
+
   # start solving
   #
   # Params:
   # +limit+:: upper limit, defaulted to 1000000
   def solve limit=1000000
     start = Time.now
-    cyclic = getCyclic @@primes.sieveOfEratosthenes limit
+    cyclic = getCyclic Primes.generate limit
     stop = Time.now
     printf(
       "Cyclic primes: %d (Time: %.4f ms.)\n",
@@ -40,7 +38,7 @@ class Euler35
   # Return:
   # Array of cyclic primes.
   def getCyclic primes
-    return primes.find_all { |b| @@primes.cyclic? b }
+    return primes.find_all { |b| Primes.cyclic? b }
   end
 
 end

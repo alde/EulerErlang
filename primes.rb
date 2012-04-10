@@ -4,7 +4,7 @@ class Primes
   #
   # Params:
   # +limit+:: upper limit of primes. Last one will be <= this.
-  def generatePrimes limit
+  def Primes.generatePrimes limit
     s = (2..limit)
     s.select { |num| (2..Math.sqrt(num)).none? {|d| (num % d).zero? }}
   end
@@ -14,7 +14,7 @@ class Primes
   #
   # Params:
   # +limit+:: upper limit of primes. Last one will be <= this.
-  def sieveOfEratosthenes limit
+  def Primes.generate limit
     s = (0..limit).to_a
     s[0] = s[1] = nil
     s.each do |p|
@@ -26,12 +26,12 @@ class Primes
   end
 
   # Check if it is a cyclic prime.
-  def cyclic? number
+  def Primes.cyclic? number
     f = number.to_s
     i = f.length
     i.times do
       return false if prime?(f.to_i) == false
-      f = rotate(f)
+      f = Primes.rotate(f)
     end
     return true
   end
@@ -43,7 +43,7 @@ class Primes
   #
   # Return:
   # Boolean
-  def prime? num
+  def Primes.prime? num
     if num < 2
       return false
     elsif num < 4
@@ -69,9 +69,7 @@ class Primes
     end
   end
 
-
-  #---PRIVATE METHODS-----------------------------------------------------------
-  private
+  protected
 
   # Rotate the given string
   #
@@ -80,7 +78,7 @@ class Primes
   #
   # Return:
   # String
-  def rotate string
+  def Primes.rotate string
     steps = 1 % string.length
     string[-steps..-1].concat string[0...-steps]
   end

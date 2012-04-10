@@ -12,10 +12,7 @@ require "./primes.rb"
 
 class Euler_037
 
-    @@primes = nil
-
     def initialize
-        @@primes = Primes.new
         printf(
             "=== Euler 037 ============= \n"
         )
@@ -23,7 +20,7 @@ class Euler_037
 
     def solve
         start = Time.now
-        primes = @@primes.sieveOfEratosthenes 1000000
+        primes = Primes.generate 1000000
         answer = truncatable primes
         stop = Time.now
         printf(
@@ -50,13 +47,13 @@ class Euler_037
     def truncatable_prime? i
         nums = i.to_s.chars.to_a
         nums.length.times do
-            return false if (!@@primes.prime? nums.join().to_i)
+            return false if (!Primes.prime? nums.join().to_i)
             nums.shift
         end
 
         nums = i.to_s
         while nums.length > 0
-            return false if (!@@primes.prime? nums.to_i)
+            return false if (!Primes.prime? nums.to_i)
             nums.chop!()
         end
         return true
