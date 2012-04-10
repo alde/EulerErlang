@@ -36,9 +36,6 @@ class Primes
     return true
   end
 
-  #---PRIVATE METHODS-----------------------------------------------------------
-  private
-
   # Check if the supplied value is a prime.
   #
   # Params:
@@ -71,6 +68,10 @@ class Primes
       return true
     end
   end
+
+
+  #---PRIVATE METHODS-----------------------------------------------------------
+  private
 
   # Rotate the given string
   #
