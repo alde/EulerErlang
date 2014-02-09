@@ -19,8 +19,8 @@ is_prime(N) ->
     is_prime(N,2).
 
 %---- Sieve of Eratheosnes -----------------------------------------------------
-primes(Prime, Max, Primes,Integers) when Prime > Max ->
-    lists:reverse(Primes) ++ Integers;
+primes(Prime, Max, Primes, Integers) when Prime > Max ->
+    lists:flatten([lists:reverse([Prime | Primes]) | Integers]);
 primes(Prime, Max, Primes, Integers) ->
     [NewPrime|NewIntegers] = [ X || X <- Integers, X rem Prime =/= 0 ],
     primes(NewPrime, Max, [Prime|Primes], NewIntegers).
