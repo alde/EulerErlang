@@ -3,3 +3,4 @@
 \#*.erl\#
 *.dump
 !*.erl
+*.swp
